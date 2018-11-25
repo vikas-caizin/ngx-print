@@ -12,7 +12,7 @@ export class NgxPrintDirective {
    * TODO: Handle misused cases
    */
   @HostListener('click', ['$event.target'])
-  public print(btn): void {
+  public print(): void {
     let printContents, popupWin;
     printContents = document.getElementById(this.printSectionId).innerHTML;
     popupWin = window.open('', '_blank', 'top=0,left=0,height=100%,width=auto');
