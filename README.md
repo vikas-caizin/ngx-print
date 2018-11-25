@@ -1,27 +1,58 @@
-# NgxPrint
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.0.6.
+# ngx-print : *plug n' play Angular (2++) directive to print your stuff*
+This directive makes printing your HTML sections smooth and easy in your Angular application. It is inspired from the old [AngularJS ngPrint](https://github.com/gilf/ngPrint) directive, thus it is intendend to be used with the new Angular -2/4/5/6/7-... ***Enjoy ! contributions are so welcomed :)***
 
-## Development server
+## Setup
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+ **1-** In your root application folder run:
+```bash
+$ npm install ngx-print
+```
 
-## Code scaffolding
+ **2-** Once `ngx-print` is installed, you need to import the main module `NgxPrintModule` :
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+   ```js
+import {NgxPrintModule} from 'ngx-print';
 
-## Build
+@NgModule({
+  ...
+  imports: [NgxPrintModule, ...],
+  ...
+})
+export class YourAppModule {
+}
+```
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+ **3-** Then plug n' play with it: 
 
-## Running unit tests
+ - Assuming you want to print the following HTML section:
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+```html
+<div>
+  <!--Your html stuff that you want to print-->
+</div>
+<button>print</button> <!--Your relevant print button-->
 
-## Running end-to-end tests
+```
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+ - Now, what you have to do is tagging your *wanted-to-print* section by an `id` attribute, then link that `id` to a directive parameter in your button :
 
-## Further help
+```html
+ <!--
+   1)- Add an ID here
+ -->
+<div id="print-section"> 
+  <!--Your html stuff that you want to print-->
+</div>
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+ <!--
+   2)- Add the directive name in your button (ngxPrint),
+   3)- Affect your ID to printSectionId
+ -->
+<button printSectionId="print-section" ngxPrint>print</button> 
+
+```
+## TODO
+* Disable the print button once the popped window is opened
+* Write tests
+* ...
