@@ -6,11 +6,7 @@ import { Directive, HostListener, Input } from '@angular/core';
 export class NgxPrintDirective {
 
   @Input() printSectionId: string;
-  /**
-   * TODO: check if the poppedup window is closed
-   * TODO: disable print button if the window is opened
-   * TODO: Handle misused cases
-   */
+
   @HostListener('click', ['$event.target'])
   public print(): void {
     let printContents, popupWin;
