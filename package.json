@@ -12,16 +12,6 @@
     "url": "https://github.com/selemxmn/ngx-print/issues"
   },
   "homepage": "https://github.com/selemxmn/ngx-print#readme",
-  "keywords": [
-    "print",
-    "angular",
-    "library",
-    "ng-print",
-    "ngx-print",
-    "directive",
-    "dependency",
-    "angular-print"
-  ],
   "dependencies": {
     "tslib": "^1.9.3"
   },
