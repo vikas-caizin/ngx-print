@@ -1,12 +1,37 @@
 import { Directive, HostListener, Input } from '@angular/core';
-
+/**
+ *
+ *
+ * @export
+ * @class NgxPrintDirective
+ */
 @Directive({
   selector: 'button[ngxPrint]'
 })
+
 export class NgxPrintDirective {
 
+  /**
+   *
+   *
+   * @type {string}
+   * @memberof NgxPrintDirective
+   */
   @Input() printSectionId: string;
 
+  /**
+   *
+   *
+   * @type {string}
+   * @memberof NgxPrintDirective
+   */
+  @Input() windowTitle: string;
+
+  /**
+   *
+   *
+   * @memberof NgxPrintDirective
+   */
   @HostListener('click', ['$event.target'])
   public print(): void {
     let printContents, popupWin;
@@ -16,7 +41,7 @@ export class NgxPrintDirective {
     popupWin.document.write(`
       <html>
         <head>
-          <title>Print tab</title>
+          <title>${this.windowTitle ? this.windowTitle : ''}</title>
         </head>
     <body onload="window.print();window.close()">${printContents}</body>
       </html>`
