@@ -1,20 +1,15 @@
 import { Directive, HostListener, Input } from '@angular/core';
-/**
- *
- *
- * @export
- * @class NgxPrintDirective
- */
 @Directive({
   selector: 'button[ngxPrint]'
 })
 
 export class NgxPrintDirective {
 
+  private _printStyle = [];
+
   /**
    *
    *
-   * @type {string}
    * @memberof NgxPrintDirective
    */
   @Input() printSectionId: string;
@@ -22,10 +17,34 @@ export class NgxPrintDirective {
   /**
    *
    *
-   * @type {string}
    * @memberof NgxPrintDirective
    */
-  @Input() windowTitle: string;
+  @Input() printTitle: string;
+
+  /**
+   *
+   *
+   * @memberof NgxPrintDirective
+   */
+  @Input()
+  set printStyle(values: {[key: string]: {[key: string]: string}}) {
+    for (var key in values) {
+      if (values.hasOwnProperty(key)) {
+      this._printStyle.push((key + JSON.stringify(values[key])).replace(/['"]+/g, ''));
+      }
+    }
+    this.returnStyleValues();
+  }
+
+/**
+ *
+ *
+ * @returns
+ * @memberof NgxPrintDirective
+ */
+private returnStyleValues() {
+    return this._printStyle.join(' ');
+  }
 
   /**
    *
@@ -41,7 +60,10 @@ export class NgxPrintDirective {
     popupWin.document.write(`
       <html>
         <head>
-          <title>${this.windowTitle ? this.windowTitle : ''}</title>
+          <title>${this.printTitle ? this.printTitle : ''}</title>
+          <style>
+            ${this.returnStyleValues()}
+          </style>
         </head>
     <body onload="window.print();window.close()">${printContents}</body>
       </html>`
