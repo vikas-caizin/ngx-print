@@ -22,6 +22,11 @@
     "dependency",
     "angular-print"
   ],
+  "scripts": {
+    "ng": "ng",
+    "build": "ng build",
+    "test": "ng test"
+  },
   "dependencies": {
     "tslib": "^1.9.3"
   },
