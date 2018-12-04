@@ -52,6 +52,47 @@ export class YourAppModule {
 <button printSectionId="print-section" ngxPrint>print</button> 
 
 ```
+## Optional properties
+
+- You want a customized title for your printing window ? you have the choice by adding a new attribute to your print button `printTitle`:
+
+
+```html
+
+<div  id="print-section">
+
+<!-- ... -->
+
+</div>
+
+<button  
+	printTitle="MyTitle"  
+	printSectionId="print-section"  
+	ngxPrint>print</button>
+
+```
+
+  
+- Also, if you want to customize the printing window style sheet (CSS) ? Hence you can do so by adding infinite styles to another attribute called `printStyle`:
+
+  
+```html
+
+<div  id="print-section">
+
+<!-- ... -->
+
+</div>
+
+<button
+	[printStyle]="{h1 : {'color': 'red'}, h2 : {'border': 'solid 1px'}}"
+	printSectionId="print-section"
+	ngxPrint>print</button>
+
+```
+
+Here some simple styles were added to every `h1` & `h2` tags within the `div` where `print-section` is tagged to its `id` attribute.
+
 ## TODO
 * Disable the print button once the popped window is opened
 * Write tests
