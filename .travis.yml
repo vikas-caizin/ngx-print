@@ -3,12 +3,12 @@ sudo: false
 dist: trusty
 node_js:
   - '10.14.2'
-  
+
 addons:
   packages:
     - unzip
     - google-chrome-stable
-    
+
 cache:
   yarn: true
   directories:
@@ -31,9 +31,7 @@ after_success:
   - cat ./dist/coverage/lcov/lcov | ./node_modules/coveralls/bin/coveralls.js
 
 notifications:
-  email:
-    on_success: never
-    on_failure: never
+  email: false
 
 script:
   - yarn run test && yarn run build
