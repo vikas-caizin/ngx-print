@@ -25,7 +25,7 @@ before_script:
   - yarn install
 
 after_failure:
-  - cat /home/travis/build/selemxmn/ngx-print/debug.log
+  - cat /home/travis/build/selemxmn/ngx-print/yarn-error.log
 
 after_success:
   - cat ./dist/coverage/lcov/lcov | ./node_modules/coveralls/bin/coveralls.js

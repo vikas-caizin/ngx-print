@@ -1,3 +1,4 @@
+[![](https://img.shields.io/npm/dt/ngx-print.svg)](https://www.npmjs.com/package/ngx-print) [![](https://travis-ci.org/selemxmn/ngx-print.svg?branch=master)](https://travis-ci.org/selemxmn/ngx-print) [![](https://coveralls.io/repos/github/selemxmn/ngx-helpers/badge.svg?branch=master)](https://coveralls.io/github/selemxmn/ngx-print?branch=master) ![](https://img.shields.io/david/selemxmn/ngx-print.svg) ![](https://img.shields.io/david/dev/selemxmn/ngx-print.svg)
 
 # ngx-print : *plug n' play Angular (2++) directive to print your stuff*
 This directive makes printing your HTML sections smooth and easy in your Angular application. It is inspired from the old [AngularJS ngPrint](https://github.com/gilf/ngPrint) directive, thus it is intendend to be used with the new Angular -2/4/5/6/7-... ***Enjoy ! contributions are so welcomed :)***
