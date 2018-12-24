@@ -39,11 +39,15 @@ export class NgxPrintDirective {
 /**
  *
  *
- * @returns
+ * @returns the string that create the stylesheet which will be injected
+ * later within <style></style> tag.
+ *
+ * -join/replace to transform an array objects to css-styled string
+ *
  * @memberof NgxPrintDirective
  */
 private returnStyleValues() {
-    return this._printStyle.join(' ');
+  return this._printStyle.join(' ').replace(',',';');
   }
 
   /**
