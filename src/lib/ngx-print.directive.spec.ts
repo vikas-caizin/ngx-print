@@ -47,17 +47,30 @@ describe('NgxPrintDirective', () => {
   let fixture:    ComponentFixture<TestNgxPrintComponent>;
 
   beforeEach(() => {
+
+    // Configure a NgModule-like decorator metadata
     TestBed.configureTestingModule({
       declarations: [TestNgxPrintComponent, NgxPrintDirective]
     });
+
+    // Create a Component (fixture)
     fixture = TestBed.createComponent(TestNgxPrintComponent);
-    component = fixture.componentInstance;
-    // buttonEl = fixture.debugElement.query(By.css('input'));
+
+    // Get the button element (on which we tag the directive) to simulate clicks on it
+    buttonEl =  fixture.debugElement.query(By.directive(NgxPrintDirective));
+
+    // fixture.detectChanges();
   });
 
+  it('should create an instance', () => {
+    const directive = new NgxPrintDirective();
+    expect(directive).toBeTruthy();
+  });
 
-  // it('should create an instance', () => {
-  //   const directive = new NgxPrintDirective();
-  //   expect(directive).toBeTruthy();
+  // it(`should popup a new window`, () => {
+  //   // simulate click
+  //   buttonEl.triggerEventHandler('click', {});
+  //   expect()
   // });
+
 });
