@@ -46,6 +46,13 @@ describe('NgxPrintDirective', () => {
   let component:  TestNgxPrintComponent;
   let fixture:    ComponentFixture<TestNgxPrintComponent>;
 
+  // To change this later, so it'll depend on TestNgxPrintComponent
+  let styleSheet: {[key: string]: {[key: string]: string}}
+                   = {
+                     'h2' : {'border': 'solid 1px'},
+                     'h1' : {'color': 'red', 'border': '1px solid'}
+                    };
+
   beforeEach(() => {
 
     // Configure a NgModule-like decorator metadata
@@ -56,10 +63,13 @@ describe('NgxPrintDirective', () => {
     // Create a Component (fixture)
     fixture = TestBed.createComponent(TestNgxPrintComponent);
 
+    // Create a component instance
+    component = fixture.componentInstance;
+
     // Get the button element (on which we tag the directive) to simulate clicks on it
     buttonEl =  fixture.debugElement.query(By.directive(NgxPrintDirective));
 
-    // fixture.detectChanges();
+    fixture.detectChanges();
   });
 
   it('should create an instance', () => {
@@ -67,10 +77,32 @@ describe('NgxPrintDirective', () => {
     expect(directive).toBeTruthy();
   });
 
-  // it(`should popup a new window`, () => {
-  //   // simulate click
-  //   buttonEl.triggerEventHandler('click', {});
-  //   expect()
+  // it('should test the @Input printStyle', () => {
+  //   const directive = new NgxPrintDirective();
+  //   directive.printStyle = styleSheet;
+
+
+  //   expect(directive.printStyle).toB;
   // });
+
+  // it('should returns a string from array of objects', () => {
+    // const directive = new NgxPrintDirective();
+    // let _printStyle = [];
+    // for (var key in styleSheet) {
+    //   if (styleSheet.hasOwnProperty(key)) {
+    //     _printStyle.push((key + JSON.stringify(styleSheet[key])).replace(/['"]+/g, ''));
+    //   }
+    // }
+    // expect(directive.returnStyleValues()).toHaveBeenCalled();
+
+  // });
+
+  it(`should popup a new window`, ()=> {
+    spyOn(window, 'open');
+    // simulate click
+    buttonEl.triggerEventHandler('click', {});
+    expect(window.open).toHaveBeenCalled();
+  });
+
 
 });

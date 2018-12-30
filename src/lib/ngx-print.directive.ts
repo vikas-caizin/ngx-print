@@ -42,7 +42,7 @@ export class NgxPrintDirective {
  * @returns
  * @memberof NgxPrintDirective
  */
-private returnStyleValues() {
+public returnStyleValues() {
     return this._printStyle.join(' ');
   }
 
