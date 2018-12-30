@@ -28,7 +28,7 @@ after_failure:
   - cat /home/travis/build/selemxmn/ngx-print/yarn-error.log
 
 after_success:
-  - cat ./dist/coverage/lcov/lcov | ./node_modules/coveralls/bin/coveralls.js
+  - cat ./dist/coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js
 
 notifications:
   email: false
