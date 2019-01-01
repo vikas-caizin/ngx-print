@@ -60,10 +60,10 @@ describe('NgxPrintDirective', () => {
       declarations: [TestNgxPrintComponent, NgxPrintDirective]
     });
 
-    // Create a Component (fixture)
+    // Create a fixture object (that is going to allows us to create an instance of that component)
     fixture = TestBed.createComponent(TestNgxPrintComponent);
 
-    // Create a component instance
+    // Create a component instance ( ~ new Component)
     component = fixture.componentInstance;
 
     // Get the button element (on which we tag the directive) to simulate clicks on it
@@ -80,22 +80,27 @@ describe('NgxPrintDirective', () => {
   // it('should test the @Input printStyle', () => {
   //   const directive = new NgxPrintDirective();
   //   directive.printStyle = styleSheet;
+  //   for (var key in directive.printStyle) {
+  //     if (directive.printStyle.hasOwnProperty(key)) {
+  //       directive._printStyle.push((key + JSON.stringify(directive.printStyle[key])).replace(/['"]+/g, ''));
+  //     }
+  //   }
+  //   directive.returnStyleValues();
 
-
-  //   expect(directive.printStyle).toB;
+  //   expect(directive.returnStyleValues).toHaveBeenCalled();
   // });
 
-  // it('should returns a string from array of objects', () => {
-    // const directive = new NgxPrintDirective();
-    // let _printStyle = [];
-    // for (var key in styleSheet) {
-    //   if (styleSheet.hasOwnProperty(key)) {
-    //     _printStyle.push((key + JSON.stringify(styleSheet[key])).replace(/['"]+/g, ''));
-    //   }
-    // }
-    // expect(directive.returnStyleValues()).toHaveBeenCalled();
+  it('should returns a string from array of objects', () => {
+    const directive = new NgxPrintDirective();
+    directive._printStyle = [
+      "h2{border:solid 1px}",
+      "h1{color:red,border:1px solid}"
+    ];
+    // let returnedString = directive.returnStyleValues();
 
-  // });
+    // immediately invoked arrow function, else you can uncomment `returnedString` and use it instead
+    expect((() => {return directive.returnStyleValues()})()).toEqual('h2{border:solid 1px} h1{color:red,border:1px solid}');
+  });
 
   it(`should popup a new window`, ()=> {
     spyOn(window, 'open');
@@ -103,6 +108,5 @@ describe('NgxPrintDirective', () => {
     buttonEl.triggerEventHandler('click', {});
     expect(window.open).toHaveBeenCalled();
   });
-
 
 });

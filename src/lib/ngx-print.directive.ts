@@ -5,7 +5,7 @@ import { Directive, HostListener, Input } from '@angular/core';
 
 export class NgxPrintDirective {
 
-  private _printStyle = [];
+  public _printStyle = [];
 
   /**
    *
@@ -36,13 +36,13 @@ export class NgxPrintDirective {
     this.returnStyleValues();
   }
 
-/**
- *
- *
- * @returns
- * @memberof NgxPrintDirective
- */
-public returnStyleValues() {
+  /**
+   *
+   *
+   * @returns
+   * @memberof NgxPrintDirective
+   */
+  public returnStyleValues() {
     return this._printStyle.join(' ');
   }
 
