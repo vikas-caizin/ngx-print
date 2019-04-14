@@ -30,7 +30,7 @@ export class NgxPrintDirective {
   set printStyle(values: {[key: string]: {[key: string]: string}}) {
     for (var key in values) {
       if (values.hasOwnProperty(key)) {
-      this._printStyle.push((key + JSON.stringify(values[key])).replace(/['"]+/g, ''));
+      this._printStyle.push((key + JSON.stringify(values[key])).replace(/,/g, ';'));
       }
     }
     this.returnStyleValues();
