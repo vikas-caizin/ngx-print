@@ -55,7 +55,7 @@ private returnStyleValues() {
    *
    * @memberof NgxPrintDirective
    */
-  @HostListener('click', ['$event.target'])
+  @HostListener('click')
   public print(): void {
     let printContents, popupWin;
     printContents = document.getElementById(this.printSectionId).innerHTML;
