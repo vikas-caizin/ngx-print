@@ -25,9 +25,7 @@
   "scripts": {
     "ng": "ng",
     "build": "ng build",
-    "test": "ng test",
-    "packagr": "ng-packagr -p ng-package.json",
-    "prepare": "npm run packagr"
+    "test": "ng test"
   },
   "dependencies": {
     "tslib": "^1.9.3"
@@ -47,6 +45,5 @@
   "peerDependencies": {
     "@angular/common": "*",
     "@angular/core": "*"
-  },
-  "files": ["dist"]
+  }
 }
