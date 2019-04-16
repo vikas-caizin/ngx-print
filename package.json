@@ -47,5 +47,6 @@
   "peerDependencies": {
     "@angular/common": "*",
     "@angular/core": "*"
-  }
+  },
+  "files": ["dist"]
 }
