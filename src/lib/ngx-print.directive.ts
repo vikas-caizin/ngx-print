@@ -22,8 +22,8 @@ export class NgxPrintDirective {
   @Input() printTitle: string;
 
   /**
-   * 
-   * 
+   *
+   *
    * @memberof NgxPrintDirective
    */
   @Input() useExistingCss = false;
@@ -58,10 +58,10 @@ private returnStyleValues() {
   }
 
   /**
-   * 
-   * 
+   *
+   *
    * @returns html for the given tag
-   * 
+   *
    * @memberof NgxPrintDirective
    */
   private getElementTag(tag: keyof HTMLElementTagNameMap): string {
