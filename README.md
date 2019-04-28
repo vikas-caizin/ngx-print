@@ -93,7 +93,7 @@ export class YourAppModule {
 
 Here some simple styles were added to every `h1` & `h2` tags within the `div` where `print-section` is tagged to its `id` attribute.
   
-- If you would like to use your existing CSS with media print you can add the `useExistingCss` attribute:
+  - If you would like to use your existing CSS with media print you can add the `useExistingCss` attribute:
 
 ```html
 
