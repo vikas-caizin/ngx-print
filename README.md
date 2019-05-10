@@ -111,6 +111,25 @@ Here some simple styles were added to every `h1` & `h2` tags within the `div` wh
 
 ```
 
+- If you want to customize the printing window style sheet (CSS) by importing the css provided in assets/css use `styleSheetFile`:
+
+
+```html
+
+<div  id="print-section">
+
+<!-- ... -->
+
+</div>
+
+<button
+styleSheetFile="assets/css/custom1.css,assets/css/custom2.css"
+printSectionId="print-section"
+ngxPrint>print</button>
+
+```
+
+
 ## TODO
 * Disable the print button once the popped window is opened
 * Write tests
