@@ -26,6 +26,13 @@ export class NgxPrintDirective {
    *
    * @memberof NgxPrintDirective
    */
+  @Input() useExistingCss = false;
+
+  /**
+   *
+   *
+   * @memberof NgxPrintDirective
+   */
   @Input()
   set printStyle(values: {[key: string]: {[key: string]: string}}) {
     for (var key in values) {
@@ -47,8 +54,25 @@ export class NgxPrintDirective {
  * @memberof NgxPrintDirective
  */
 private returnStyleValues() {
-  return this._printStyle.join(' ').replace(',',';');
+  return '<style>' + this._printStyle.join(' ').replace(',',';') + '</style>';
   }
+
+  /**
+   *
+   *
+   * @returns html for the given tag
+   *
+   * @memberof NgxPrintDirective
+   */
+  private getElementTag(tag: keyof HTMLElementTagNameMap): string {
+    const html: string[] = [];
+    const elements = document.getElementsByTagName(tag);
+    for (let index = 0; index < elements.length; index++) {
+      html.push(elements[index].outerHTML);
+    }
+    return html.join('\r\n');
+  }
+
 
   /**
    *
@@ -57,7 +81,13 @@ private returnStyleValues() {
    */
   @HostListener('click')
   public print(): void {
-    let printContents, popupWin;
+    let printContents, popupWin, styles, links;
+
+    if(this.useExistingCss) {
+      styles = this.getElementTag('style');
+      links = this.getElementTag('link');
+    }
+
     printContents = document.getElementById(this.printSectionId).innerHTML;
     popupWin = window.open('', '_blank', 'top=0,left=0,height=100%,width=auto');
     popupWin.document.open();
@@ -65,9 +95,9 @@ private returnStyleValues() {
       <html>
         <head>
           <title>${this.printTitle ? this.printTitle : ''}</title>
-          <style>
-            ${this.returnStyleValues()}
-          </style>
+          ${this.returnStyleValues()}
+          ${styles}
+          ${links}
         </head>
     <body onload="window.print();window.close()">${printContents}</body>
       </html>`
