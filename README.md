@@ -92,6 +92,43 @@ export class YourAppModule {
 ```
 
 Here some simple styles were added to every `h1` & `h2` tags within the `div` where `print-section` is tagged to its `id` attribute.
+  
+  - If you would like to use your existing CSS with media print you can add the `useExistingCss` attribute:
+
+```html
+
+<div  id="print-section">
+
+<!-- ... -->
+
+</div>
+
+<button
+	[printStyle]="{h1 : {'color': 'red'}, h2 : {'border': 'solid 1px'}}"
+        [useExistingCss]="true"
+	printSectionId="print-section"
+	ngxPrint>print</button>
+
+```
+
+- If you want to customize the printing window style sheet (CSS) by importing the css provided in assets/css use `styleSheetFile`:
+
+
+```html
+
+<div  id="print-section">
+
+<!-- ... -->
+
+</div>
+
+<button
+styleSheetFile="assets/css/custom1.css,assets/css/custom2.css"
+printSectionId="print-section"
+ngxPrint>print</button>
+
+```
+
 
 ## TODO
 * Disable the print button once the popped window is opened
