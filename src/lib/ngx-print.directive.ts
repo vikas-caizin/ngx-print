@@ -3,7 +3,8 @@ import { Directive, HostListener, Input } from "@angular/core";
   selector: "button[ngxPrint]"
 })
 export class NgxPrintDirective {
-  private _printStyle = [];
+
+  public _printStyle = [];
 
   /**
    *
@@ -33,9 +34,9 @@ export class NgxPrintDirective {
    */
   @Input()
   set printStyle(values: { [key: string]: { [key: string]: string } }) {
-    for (var key in values) {
+    for (let key in values) {
       if (values.hasOwnProperty(key)) {
-      this._printStyle.push((key + JSON.stringify(values[key])).replace(/,/g, ';'));
+      this._printStyle.push((key + JSON.stringify(values[key])).replace(/['"]+/g, ''));
       }
     }
     this.returnStyleValues();
@@ -52,7 +53,7 @@ export class NgxPrintDirective {
  * @memberof NgxPrintDirective
  */
 private returnStyleValues() {
-  return '<style>' + this._printStyle.join(' ').replace(',',';') + '</style>';
+  return '<style>' + this._printStyle.join(' ').replace(/,/g,';') + '</style>';
   }
 
   /**
