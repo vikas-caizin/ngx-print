@@ -140,6 +140,6 @@ Huge thanks to: [deeplotia](https://github.com/deeplotia) , [Ben L](https://gith
 
 ## Donation
 
-If this project help you reduce time to develop, you can give me a cup of coffee 🍵 :)
+Did this project help you reducing time? I won't say no to a cup of coffee 🍵 :)
 
 [![paypal](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](https://www.paypal.me/selemxmn/2)
