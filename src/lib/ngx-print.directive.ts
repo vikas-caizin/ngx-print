@@ -53,7 +53,7 @@ export class NgxPrintDirective {
  * @memberof NgxPrintDirective
  */
 private returnStyleValues() {
-  return '<style>' + this._printStyle.join(' ').replace(/,/g,';') + '</style>';
+  return `<style> ${this._printStyle.join(' ').replace(/,/g,';')} </style>`;
   }
 
   /**
@@ -122,6 +122,7 @@ private returnStyleValues() {
       <html>
         <head>
           <title>${this.printTitle ? this.printTitle : ""}</title>
+          ${this.returnStyleValues()}
           ${this.returnStyleSheetLinkTags()}
           ${styles}
           ${links}
