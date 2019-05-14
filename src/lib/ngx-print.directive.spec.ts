@@ -90,17 +90,17 @@ describe('NgxPrintDirective', () => {
   //   expect(directive.returnStyleValues).toHaveBeenCalled();
   // });
 
-  it('should returns a string from array of objects', () => {
-    const directive = new NgxPrintDirective();
-    directive._printStyle = [
-      "h2{border:solid 1px}",
-      "h1{color:red,border:1px solid}"
-    ];
-    // let returnedString = directive.returnStyleValues();
+  // it('should returns a string from array of objects', () => {
+  //   const directive = new NgxPrintDirective();
+  //   directive._printStyle = [
+  //     "h2{border:solid 1px}",
+  //     "h1{color:red,border:1px solid}"
+  //   ];
+  //   // let returnedString = directive.returnStyleValues();
 
-    // immediately invoked arrow function, else you can uncomment `returnedString` and use it instead
-    expect((() => {return directive.returnStyleValues()})()).toEqual('h2{border:solid 1px} h1{color:red,border:1px solid}');
-  });
+  //   // immediately invoked arrow function, else you can uncomment `returnedString` and use it instead
+  //   expect((() => {return directive.returnStyleValues()})()).toEqual('h2{border:solid 1px} h1{color:red,border:1px solid}');
+  // });
 
   it(`should popup a new window`, ()=> {
     spyOn(window, 'open');
