@@ -74,7 +74,7 @@ export class YourAppModule {
 ```
 
   
-- Also, if you want to customize the printing window style sheet (CSS) ? Hence you can do so by adding infinite styles to another attribute called `printStyle`:
+- Also, would you like to customize the printing window style sheet (CSS) ? Hence you can do so by adding infinite styles to another attribute called `printStyle`:
 
   
 ```html
@@ -129,9 +129,17 @@ printSectionId="print-section"
 ngxPrint>print</button>
 
 ```
+## Contributors :1st_place_medal: 
 
+Huge thanks to: [deeplotia](https://github.com/deeplotia) , [Ben L](https://github.com/broem) , [Gavyn McKenzie](https://github.com/gavmck) and to all  `ngx-print` users 
 
 ## TODO
 * Disable the print button once the popped window is opened
 * Write tests
 * ...
+
+## Donation
+
+If this project help you reduce time to develop, you can give me a cup of coffee 🍵 :)
+
+[![paypal](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](https://www.paypal.me/selemxmn/2)
