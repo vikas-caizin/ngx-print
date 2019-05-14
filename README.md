@@ -1,3 +1,4 @@
+[![](https://badgen.net/npm/dt/ngx-print)](https://www.npmjs.com/package/ngx-print) [![](https://travis-ci.org/selemxmn/ngx-print.svg?branch=master)](https://travis-ci.org/selemxmn/ngx-print) [![Coverage Status](https://coveralls.io/repos/github/selemxmn/ngx-print/badge.svg?branch=unit-tests)](https://coveralls.io/github/selemxmn/ngx-print?branch=unit-tests) ![](https://img.shields.io/david/selemxmn/ngx-print.svg) ![](https://img.shields.io/david/dev/selemxmn/ngx-print.svg)
 
 # ngx-print : *plug n' play Angular (2++) directive to print your stuff*
 This directive makes printing your HTML sections smooth and easy in your Angular application. It is inspired from the old [AngularJS ngPrint](https://github.com/gilf/ngPrint) directive, thus it is intendend to be used with the new Angular -2/4/5/6/7-... ***Enjoy ! contributions are so welcomed :)***
@@ -73,7 +74,7 @@ export class YourAppModule {
 ```
 
   
-- Also, if you want to customize the printing window style sheet (CSS) ? Hence you can do so by adding infinite styles to another attribute called `printStyle`:
+- Also, would you like to customize the printing window style sheet (CSS) ? Hence you can do so by adding infinite styles to another attribute called `printStyle`:
 
   
 ```html
@@ -128,9 +129,17 @@ printSectionId="print-section"
 ngxPrint>print</button>
 
 ```
+## Contributors :1st_place_medal: 
 
+Huge thanks to: [deeplotia](https://github.com/deeplotia) , [Ben L](https://github.com/broem) , [Gavyn McKenzie](https://github.com/gavmck) and to all  `ngx-print` users 
 
 ## TODO
 * Disable the print button once the popped window is opened
 * Write tests
 * ...
+
+## Donation
+
+Did this project help you reducing time? I won't say no to a cup of coffee 🍵 :)
+
+[![paypal](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](https://www.paypal.me/selemxmn/2)
