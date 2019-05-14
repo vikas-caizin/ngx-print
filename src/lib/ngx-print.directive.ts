@@ -52,7 +52,7 @@ export class NgxPrintDirective {
  *
  * @memberof NgxPrintDirective
  */
-private returnStyleValues() {
+public returnStyleValues() {
   return `<style> ${this._printStyle.join(' ').replace(/,/g,';')} </style>`;
   }
 
