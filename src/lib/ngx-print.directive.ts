@@ -108,7 +108,7 @@ public returnStyleValues() {
    */
   @HostListener('click')
   public print(): void {
-    let printContents, popupWin, styles, links;
+    let printContents, popupWin, styles = '', links = '';
 
     if(this.useExistingCss) {
       styles = this.getElementTag('style');
