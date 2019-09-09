@@ -127,7 +127,9 @@ public returnStyleValues() {
           ${styles}
           ${links}
         </head>
-    <body onload="window.print();window.close()">${printContents}</body>
+        <body onload="window.print(); setTimeout(()=>{ window.close(); }, 0)">
+          ${printContents}
+        </body>
       </html>`);
     popupWin.document.close();
   }
