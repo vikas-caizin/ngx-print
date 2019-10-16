@@ -36,24 +36,24 @@ export class NgxPrintDirective {
   set printStyle(values: { [key: string]: { [key: string]: string } }) {
     for (let key in values) {
       if (values.hasOwnProperty(key)) {
-      this._printStyle.push((key + JSON.stringify(values[key])).replace(/['"]+/g, ''));
+        this._printStyle.push((key + JSON.stringify(values[key])).replace(/['"]+/g, ''));
       }
     }
     this.returnStyleValues();
   }
 
-/**
- *
- *
- * @returns the string that create the stylesheet which will be injected
- * later within <style></style> tag.
- *
- * -join/replace to transform an array objects to css-styled string
- *
- * @memberof NgxPrintDirective
- */
-public returnStyleValues() {
-  return `<style> ${this._printStyle.join(' ').replace(/,/g,';')} </style>`;
+  /**
+   *
+   *
+   * @returns the string that create the stylesheet which will be injected
+   * later within <style></style> tag.
+   *
+   * -join/replace to transform an array objects to css-styled string
+   *
+   * @memberof NgxPrintDirective
+   */
+  public returnStyleValues() {
+    return `<style> ${this._printStyle.join(' ').replace(/,/g, ';')} </style>`;
   }
 
   /**
@@ -110,7 +110,7 @@ public returnStyleValues() {
   public print(): void {
     let printContents, popupWin, styles = '', links = '';
 
-    if(this.useExistingCss) {
+    if (this.useExistingCss) {
       styles = this.getElementTag('style');
       links = this.getElementTag('link');
     }
@@ -127,9 +127,16 @@ public returnStyleValues() {
           ${styles}
           ${links}
         </head>
-        <body onload="window.print(); setTimeout(()=>{ window.close(); }, 0)">
+        <body>
           ${printContents}
         </body>
+        <script>
+            function openPrintWindow() {
+              window.print();
+              setTimeout(()=>{ window.close(); }, 0);
+            }
+            window.onload = openPrintWindow();
+        </script>
       </html>`);
     popupWin.document.close();
   }
