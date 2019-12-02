@@ -1,11 +1,10 @@
-import { Directive, HostListener, Input } from '@angular/core';
+import { Directive, HostListener, Input } from "@angular/core";
 @Directive({
-  selector: 'button[ngxPrint]'
+  selector: "button[ngxPrint]"
 })
-
 export class NgxPrintDirective {
 
-  private _printStyle = [];
+  public _printStyle = [];
 
   /**
    *
@@ -34,8 +33,8 @@ export class NgxPrintDirective {
    * @memberof NgxPrintDirective
    */
   @Input()
-  set printStyle(values: {[key: string]: {[key: string]: string}}) {
-    for (var key in values) {
+  set printStyle(values: { [key: string]: { [key: string]: string } }) {
+    for (let key in values) {
       if (values.hasOwnProperty(key)) {
       this._printStyle.push((key + JSON.stringify(values[key])).replace(/['"]+/g, ''));
       }
@@ -53,8 +52,8 @@ export class NgxPrintDirective {
  *
  * @memberof NgxPrintDirective
  */
-private returnStyleValues() {
-  return '<style>' + this._printStyle.join(' ').replace(',',';') + '</style>';
+public returnStyleValues() {
+  return `<style> ${this._printStyle.join(' ').replace(/,/g,';')} </style>`;
   }
 
   /**
@@ -64,6 +63,34 @@ private returnStyleValues() {
    *
    * @memberof NgxPrintDirective
    */
+  private _styleSheetFile = '';
+
+  /**
+   * @memberof NgxPrintDirective
+   * @param cssList
+   */
+  @Input()
+  set styleSheetFile(cssList: string) {
+    let linkTagFn = cssFileName =>
+      `<link rel="stylesheet" type="text/css" href="${cssFileName}">`;
+    if (cssList.indexOf(',') !== -1) {
+      const valueArr = cssList.split(',');
+      for (let val of valueArr) {
+        this._styleSheetFile = this._styleSheetFile + linkTagFn(val);
+      }
+    } else {
+      this._styleSheetFile = linkTagFn(cssList);
+    }
+  }
+
+  /**
+   * @returns string which contains the link tags containing the css which will
+   * be injected later within <head></head> tag.
+   *
+   */
+  private returnStyleSheetLinkTags() {
+    return this._styleSheetFile;
+  }
   private getElementTag(tag: keyof HTMLElementTagNameMap): string {
     const html: string[] = [];
     const elements = document.getElementsByTagName(tag);
@@ -79,9 +106,9 @@ private returnStyleValues() {
    *
    * @memberof NgxPrintDirective
    */
-  @HostListener('click', ['$event.target'])
+  @HostListener('click')
   public print(): void {
-    let printContents, popupWin, styles, links;
+    let printContents, popupWin, styles = '', links = '';
 
     if(this.useExistingCss) {
       styles = this.getElementTag('style');
@@ -89,19 +116,21 @@ private returnStyleValues() {
     }
 
     printContents = document.getElementById(this.printSectionId).innerHTML;
-    popupWin = window.open('', '_blank', 'top=0,left=0,height=100%,width=auto');
+    popupWin = window.open("", "_blank", "top=0,left=0,height=auto,width=auto");
     popupWin.document.open();
     popupWin.document.write(`
       <html>
         <head>
-          <title>${this.printTitle ? this.printTitle : ''}</title>
+          <title>${this.printTitle ? this.printTitle : ""}</title>
           ${this.returnStyleValues()}
+          ${this.returnStyleSheetLinkTags()}
           ${styles}
           ${links}
         </head>
-    <body onload="window.print();window.close()">${printContents}</body>
-      </html>`
-    );
+        <body onload="window.print(); setTimeout(()=>{ window.close(); }, 0)">
+          ${printContents}
+        </body>
+      </html>`);
     popupWin.document.close();
- }
+  }
 }
