@@ -127,8 +127,16 @@ public returnStyleValues() {
           ${styles}
           ${links}
         </head>
-        <body onload="window.print(); setTimeout(()=>{ window.close(); }, 0)">
+        <body>
           ${printContents}
+          <script defer>
+            function triggerPrint(event) {
+              document.removeEventListener('DOMContentLoaded', triggerPrint, false);
+              window.print();
+              setTimeout(()=>{ window.close(); }, 0);
+            }
+            document.addEventListener('DOMContentLoaded', triggerPrint, false);
+          </script>
         </body>
       </html>`);
     popupWin.document.close();
