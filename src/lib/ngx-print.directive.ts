@@ -131,11 +131,13 @@ public returnStyleValues() {
           ${printContents}
           <script defer>
             function triggerPrint(event) {
-              document.removeEventListener('DOMContentLoaded', triggerPrint, false);
-              window.print();
-              setTimeout(()=>{ window.close(); }, 0);
+              window.removeEventListener('load', triggerPrint, false);
+              setTimeout(() => {
+                window.print();
+                setTimeout(() => window.close(), 0);
+              }, 0);
             }
-            document.addEventListener('DOMContentLoaded', triggerPrint, false);
+            window.addEventListener('load', triggerPrint, false);
           </script>
         </body>
       </html>`);
