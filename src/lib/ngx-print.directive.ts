@@ -1,4 +1,4 @@
-import { Directive, HostListener, Input } from "@angular/core";
+import { Directive, HostListener, Input } from '@angular/core';
 @Directive({
   selector: "button[ngxPrint]"
 })
@@ -141,7 +141,7 @@ public returnStyleValues() {
               window.removeEventListener('load', triggerPrint, false);
               setTimeout(() => {
                 window.print();
-                setTimeout(() => window.close(), 0);
+                setTimeout(function() { window.close(); }, 0);
               }, ${this.printDelay});
             }
             window.addEventListener('load', triggerPrint, false);
