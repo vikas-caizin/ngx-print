@@ -139,7 +139,7 @@ public returnStyleValues() {
           <script defer>
             function triggerPrint(event) {
               window.removeEventListener('load', triggerPrint, false);
-              setTimeout(() => {
+              setTimeout(function() {
                 window.print();
                 setTimeout(function() { window.close(); }, 0);
               }, ${this.printDelay});
