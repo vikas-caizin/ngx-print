@@ -1,4 +1,4 @@
-import { Directive, HostListener, Input } from "@angular/core";
+import { Directive, HostListener, Input } from '@angular/core';
 @Directive({
   selector: "button[ngxPrint]"
 })
@@ -26,6 +26,13 @@ export class NgxPrintDirective {
    * @memberof NgxPrintDirective
    */
   @Input() useExistingCss = false;
+
+  /**
+   * A delay in milliseconds to force the print dialog to wait before opened. Default: 0
+   *
+   * @memberof NgxPrintDirective
+   */
+  @Input() printDelay: number = 0;
 
   /**
    *
@@ -127,8 +134,18 @@ public returnStyleValues() {
           ${styles}
           ${links}
         </head>
-        <body onload="window.print(); setTimeout(()=>{ window.close(); }, 0)">
+        <body>
           ${printContents}
+          <script defer>
+            function triggerPrint(event) {
+              window.removeEventListener('load', triggerPrint, false);
+              setTimeout(function() {
+                window.print();
+                setTimeout(function() { window.close(); }, 0);
+              }, ${this.printDelay});
+            }
+            window.addEventListener('load', triggerPrint, false);
+          </script>
         </body>
       </html>`);
     popupWin.document.close();
