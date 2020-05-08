@@ -78,8 +78,9 @@ public returnStyleValues() {
    */
   @Input()
   set styleSheetFile(cssList: string) {
-    let linkTagFn = cssFileName =>
-      `<link rel="stylesheet" type="text/css" href="${cssFileName}">`;
+    let linkTagFn = function(cssFileName) {
+      return `<link rel="stylesheet" type="text/css" href="${cssFileName}">`;
+    }
     if (cssList.indexOf(',') !== -1) {
       const valueArr = cssList.split(',');
       for (let val of valueArr) {
