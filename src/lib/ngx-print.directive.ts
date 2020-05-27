@@ -107,6 +107,18 @@ public returnStyleValues() {
     return html.join('\r\n');
   }
 
+  /**
+   * @returns html section to be printed along with some associated inputs
+   * 
+   */
+  private getHtmlContents() {
+    let printContents = document.getElementById(this.printSectionId);
+    let innards = printContents.getElementsByTagName('input');
+    for(var i = 0; i < innards.length; i++) {
+      innards[i].defaultValue = innards[i].value;
+    }
+    return printContents.innerHTML;
+  }
 
   /**
    *
@@ -122,7 +134,7 @@ public returnStyleValues() {
       links = this.getElementTag('link');
     }
 
-    printContents = document.getElementById(this.printSectionId).innerHTML;
+    printContents = this.getHtmlContents();
     popupWin = window.open("", "_blank", "top=0,left=0,height=auto,width=auto");
     popupWin.document.open();
     popupWin.document.write(`
