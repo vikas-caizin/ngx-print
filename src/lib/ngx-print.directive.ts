@@ -129,6 +129,7 @@ public returnStyleValues() {
   @HostListener('click')
   public print(): void {
     let printContents, popupWin, styles = '', links = '';
+    const baseTag = this.getElementTag('base');
 
     if(this.useExistingCss) {
       styles = this.getElementTag('style');
@@ -142,6 +143,7 @@ public returnStyleValues() {
       <html>
         <head>
           <title>${this.printTitle ? this.printTitle : ""}</title>
+          ${baseTag}
           ${this.returnStyleValues()}
           ${this.returnStyleSheetLinkTags()}
           ${styles}
