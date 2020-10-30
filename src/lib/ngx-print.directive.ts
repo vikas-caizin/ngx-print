@@ -153,9 +153,11 @@ public returnStyleValues() {
             function triggerPrint(event) {
               window.removeEventListener('load', triggerPrint, false);
               setTimeout(function() {
-                window.print();
-                setTimeout(function() { window.close(); }, 0);
+                closeWindow(window.print());
               }, ${this.printDelay});
+            }
+            function closeWindow(){
+                window.close(); 
             }
             window.addEventListener('load', triggerPrint, false);
           </script>
