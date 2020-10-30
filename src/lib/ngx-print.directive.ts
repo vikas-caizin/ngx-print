@@ -157,7 +157,7 @@ public returnStyleValues() {
               }, ${this.printDelay});
             }
             function closeWindow(){
-                window.close(); 
+                window.close();
             }
             window.addEventListener('load', triggerPrint, false);
           </script>
