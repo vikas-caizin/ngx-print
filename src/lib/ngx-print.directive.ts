@@ -109,15 +109,31 @@ public returnStyleValues() {
   }
 
   /**
+   * 
+   * @param data the html element collection to save defaults to
+   * 
+   */
+  private getFormData(data: any) {
+    for (var i = 0; i < data.length; i++) {
+      data[i].defaultValue = data[i].value;
+      if(data[i].checked) {
+        data[i].defaultChecked = true;
+      }
+    }
+  }
+
+  /**
    * @returns html section to be printed along with some associated inputs
    * 
    */
   private getHtmlContents() {
     let printContents = document.getElementById(this.printSectionId);
     let innards = printContents.getElementsByTagName('input');
-    for(var i = 0; i < innards.length; i++) {
-      innards[i].defaultValue = innards[i].value;
-    }
+    this.getFormData(innards);
+
+    let txt = printContents.getElementsByTagName('textarea');
+    this.getFormData(txt);
+    
     return printContents.innerHTML;
   }
 
