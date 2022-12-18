@@ -7,6 +7,13 @@ export class NgxPrintDirective {
   public _printStyle = [];
 
   /**
+   * Prevents the print dialog from opening on the window
+   *
+   * @memberof NgxPrintDirective
+   */
+  @Input() previewOnly: boolean = false;
+
+  /**
    *
    *
    * @memberof NgxPrintDirective
@@ -170,9 +177,9 @@ public returnStyleValues() {
           <script defer>
             function triggerPrint(event) {
               window.removeEventListener('load', triggerPrint, false);
-              setTimeout(function() {
+              ${this.previewOnly ? '' : `setTimeout(function() {
                 closeWindow(window.print());
-              }, ${this.printDelay});
+              }, ${this.printDelay});`}
             }
             function closeWindow(){
                 window.close();
