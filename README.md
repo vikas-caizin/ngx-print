@@ -127,6 +127,24 @@ Here some simple styles were added to every `h1` & `h2` tags within the `div` wh
   printSectionId="print-section"
   ngxPrint>print</button>
 
+  ```
+  
+- If you would like to show a preview without a print dialog use 
+`previewOnly`:
+
+```html
+
+<div  id="print-section">
+
+<!-- ... -->
+
+</div>
+
+<button
+  [previewOnly]="true"
+	printSectionId="print-section"
+	ngxPrint>print</button>
+
 ```
 ## Contributors :1st_place_medal: 
 
