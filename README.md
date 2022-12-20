@@ -3,6 +3,11 @@
 # ngx-print : *plug n' play Angular (2++) directive to print your stuff*
 This directive makes printing your HTML sections smooth and easy in your Angular application. It is inspired from the old [AngularJS ngPrint](https://github.com/gilf/ngPrint) directive, thus it is intendend to be used with the new Angular -2/4/5/6/7-... ***Enjoy ! contributions are so welcomed :)***
 
+## Dependencies
+| ngx-print    | Angular      |
+| ------------ | ------------ |
+| 1.2.1        | 7.0.0 - 14.1.0   |
+| 1.3.x        | 15.0.0       |
 ## Setup
 
  **1-** In your root application folder run:
