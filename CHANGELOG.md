@@ -1,3 +1,9 @@
+# 1.3.0 (2022-12-20)
+### New features
+*  Supports previewOnly tag, allowing for the print preview to show without the print dialog
+### Dependency Updates
+* Angular Ivy support with Angular 15
+
 # 1.1.0 (2018-12-04)
 ### New features
 *  Support styles (CSS) ([#5](https://github.com/selemxmn/ngx-print/issues/5)) ([71cefdf](https://github.com/selemxmn/ngx-print/commit/71cefdf))
