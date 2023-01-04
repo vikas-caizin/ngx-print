@@ -24,6 +24,9 @@
       "ngx-print/*": [
         "dist/ngx-print/*"
       ]
-    }
+    },
+  },
+  "angularCompilerOptions": {
+    "compilationMode": "partial"
   }
 }
