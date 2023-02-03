@@ -115,32 +115,56 @@ public returnStyleValues() {
     return html.join('\r\n');
   }
 
-  /**
-   * 
-   * @param data the html element collection to save defaults to
-   * 
+    /**
+   *
+   * @description When printing, the default option of form elements are printed.
+   * Here we update what that default is to print the current values.
+   *
+   * @param elements the html element collection to save defaults to
+   *
    */
-  private getFormData(data: any) {
-    for (var i = 0; i < data.length; i++) {
-      data[i].defaultValue = data[i].value;
-      if(data[i].checked) {
-        data[i].defaultChecked = true;
-      }
+  private updateInputDefaults(elements: HTMLCollectionOf<HTMLInputElement>): void {
+    for (let i = 0; i < elements.length; i++) {
+      const element = elements[i];
+      element['defaultValue'] = element.value;
+      if (element['checked']) element['defaultChecked'] = true;
+    }
+  }
+  private updateSelectDefaults(elements: HTMLCollectionOf<HTMLSelectElement>): void {
+    for (let i = 0; i < elements.length; i++) {
+      const element = elements[i];
+      const selectedIdx = element.selectedIndex;
+      const selectedOption: HTMLOptionElement = element.options[selectedIdx];
+
+      selectedOption.defaultSelected = true;
+    }
+  }
+  private updateTextAreaDefaults(elements: HTMLCollectionOf<HTMLTextAreaElement>): void {
+    for (let i = 0; i < elements.length; i++) {
+      const element = elements[i];
+      element['defaultValue'] = element.value;
     }
   }
 
   /**
-   * @returns html section to be printed along with some associated inputs
+   * @description Retrieves the html contents of the print section id.
+   * Updates the html elements to default their form values to the current form values
    * 
+   * @returns {string | null} html section to be printed
+   *
    */
-  private getHtmlContents() {
-    let printContents = document.getElementById(this.printSectionId);
-    let innards = printContents.getElementsByTagName('input');
-    this.getFormData(innards);
+  private getHtmlContents(): string | null {
+    const printContents = document.getElementById(this.printSectionId);
+    if (!printContents) return null;
 
-    let txt = printContents.getElementsByTagName('textarea');
-    this.getFormData(txt);
-    
+    const inputEls = printContents.getElementsByTagName('input');
+    const selectEls = printContents.getElementsByTagName('select');
+    const textAreaEls = printContents.getElementsByTagName('textarea');
+
+    this.updateInputDefaults(inputEls);
+    this.updateSelectDefaults(selectEls);
+    this.updateTextAreaDefaults(textAreaEls);
+
     return printContents.innerHTML;
   }
 
