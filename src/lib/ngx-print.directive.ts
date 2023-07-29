@@ -155,18 +155,41 @@ public returnStyleValues() {
    *
    */
   private getHtmlContents(): string | null {
-    const printContents = document.getElementById(this.printSectionId);
-    if (!printContents) return null;
+    // const printContents = document.getElementById(this.printSectionId);
+    // if (!printContents) return null;
 
-    const inputEls = printContents.getElementsByTagName('input');
-    const selectEls = printContents.getElementsByTagName('select');
-    const textAreaEls = printContents.getElementsByTagName('textarea');
+    // const inputEls = printContents.getElementsByTagName('input');
+    // const selectEls = printContents.getElementsByTagName('select');
+    // const textAreaEls = printContents.getElementsByTagName('textarea');
 
-    this.updateInputDefaults(inputEls);
-    this.updateSelectDefaults(selectEls);
-    this.updateTextAreaDefaults(textAreaEls);
+    // this.updateInputDefaults(inputEls);
+    // this.updateSelectDefaults(selectEls);
+    // this.updateTextAreaDefaults(textAreaEls);
 
-    return printContents.innerHTML;
+    // return printContents.innerHTML;
+
+      let printContents = document.createElement('div');
+      printContents.innerHTML = document.getElementById(this.printSectionId).innerHTML;
+        
+      let innards = printContents.getElementsByTagName('input');
+      for (var i = 0; i < innards.length; i++) {
+          innards[i].defaultValue = innards[i].value;
+      }
+    
+      const canvas = Array.from(document.getElementsByTagName('canvas'));
+      const canvasClone = Array.from(printContents.getElementsByTagName('canvas'))
+    
+      for (var i = 0; i < canvas.length; i++) {
+        const e = canvas[i];
+        const eClone = canvasClone[i];
+        const img = document.createElement('img');
+        img.className = e.className;
+        img.style.cssText = e.getAttribute('style');
+        img.src = e.toDataURL();
+        eClone.parentNode.replaceChild(img, eClone);
+      };
+    
+      return printContents.innerHTML;
   }
 
   /**
