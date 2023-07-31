@@ -1,17 +1,17 @@
 {
-  "name": "ngx-print",
+  "name": "4e-print",
   "version": "1.3.1",
   "description": "Plug n' Play Angular (2++) directive to print your stuff",
-  "author": "https://github.com/selemxmn/ngx-print/graphs/contributors",
+  "author": "",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/selemxmn/ngx-print.git"
+    "url": "git+https://github.com/vikas-caizin/ngx-print"
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/selemxmn/ngx-print/issues"
+    "url": "https://github.com/vikas-caizin/ngx-print/issues"
   },
-  "homepage": "https://github.com/selemxmn/ngx-print#readme",
+  "homepage": "https://github.com/vikas-caizin/ngx-print#readme",
   "keywords": [
     "print",
     "angular",
